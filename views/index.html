@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>前端ko双绑和绑定数据+nodeJS启动服务+require加载模块文件+jqueryDOM操作+layuiUI组件+less动态写css+gulp编译less的项目架构</title>
+    <link type="text/css" rel="stylesheet" href="/resources/js/libs/layui/css/layui.css">
+    <link type="text/css" rel="stylesheet" href="/resources/css/reset.css">
+    <link type="text/css" rel="stylesheet" href="/resources/css/common.css">
+    <link type="text/css" rel="stylesheet" href="/resources/css/index.css">
+</head>
+<body>
+    <div id="header"></div>
+    <!-- <div id="slider-left"></div> -->
+    <!-- 注意：把左边栏那一段代码拿出来作为模板，动态加载到index.html是不可行的，会导致左边栏代码不可用。 -->
+    <ul class="layui-nav layui-nav-tree layui-nav-side">
+        <li class="layui-nav-item layui-nav-itemed">
+        <a href="javascript:;">默认展开</a>
+        <dl class="layui-nav-child">
+            <dd><a href="javascript:;" data-url="demo1">demo1</a></dd>
+            <dd><a href="javascript:;" data-url="demo2">demo2</a></dd>
+            <dd><a href="">跳转</a></dd>
+        </dl>
+        </li>
+        <li class="layui-nav-item">
+        <a href="javascript:;">解决方案</a>
+        <dl class="layui-nav-child">
+            <dd><a href="">移动模块</a></dd>
+            <dd><a href="">后台模版</a></dd>
+            <dd><a href="">电商平台</a></dd>
+        </dl>
+        </li>
+        <li class="layui-nav-item"><a href="">产品</a></li>
+        <li class="layui-nav-item"><a href="">大数据</a></li>
+    </ul>
+    <div id="main"></div>
+    <!-- <div class="footer" id="footer"></div> -->
+</body>
+<script src="../resources/js/libs/require.js" data-main="../resources/js/apps/index"></script>
+</html>

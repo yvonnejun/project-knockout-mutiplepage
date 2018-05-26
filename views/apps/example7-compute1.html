@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../js/knockout-3.1.0.debug.js" charset="UTF-8"></script>
+    <title>ko-simple-bindings</title>
+    <style type="text/css">
+    .user-info {
+        padding: 5px 20px;
+    }
+    </style>
+</head>
+<body>
+    <div>用户名：<input type="text" data-bind="value:username"></div>
+    <div>年龄：<input type="text" data-bind="value:age"></div>
+    <div>用户信息：<span class="user-info" data-bind="text:userInfo"></span></div>
+
+</body>
+<script type="text/javascript">
+function Person() {
+    var self = this; // 将this存入self是安全的做法
+    self.username = ko.observable('Jack');
+    self.age = ko.observable(21);
+    self.userInfo = ko.computed(function () { // 注意：computed方法里面的几个坑
+        return this.username() + '----' + this.age(); // 坑1：调用上面的属性时，要写成带小括号的形式，但并不是方法
+    }, self); // 上面的this是指向后面这第二个参数self的，也就是说self指导了上下文环境，被this调用
+}
+ko.applyBindings(new Person());
+</script>
+</html>

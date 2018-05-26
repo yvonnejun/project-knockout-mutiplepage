@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../js/knockout-3.1.0.debug.js" charset="UTF-8"></script>
+    <title>ko-simple-bindings</title>
+</head>
+<body>
+    <p>First name : <input type="text" data-bind="value: FirstName"></p>
+    <p>Last name : <input type="text" data-bind="value: LastName"></p>
+
+    <p>user name : <input type="text" data-bind="value: user.name"></p>
+    <p>user age : <input type="text" data-bind="value: user.age"></p>
+    <p>user do : <input type="text" data-bind="value: user.do"></p>
+</body>
+<script type="text/javascript">
+function Users() {
+    this.FirstName = 'mery'
+    this.user = {
+        name: 'Lucy',
+        age: 25,
+        do: 'Lucy do something'
+    }
+    this.LastName = 'ling'
+}
+ko.applyBindings(new Users());
+</script>
+</html>

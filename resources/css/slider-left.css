@@ -1,0 +1,15 @@
+.slider-left {
+  margin-top: 60px;
+  background: #393D49;
+  width: 100%;
+  height: 1%;
+}
+/**
+  * layui库样式调整
+  */
+.layui-nav-side {
+  top: 60px;
+}
+.layui-nav {
+  border-radius: 0;
+}

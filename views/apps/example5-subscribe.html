@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../js/knockout-3.1.0.debug.js" charset="UTF-8"></script>
+    <title>ko-simple-bindings</title>
+</head>
+<body>
+    <p>user name : <input type="text" data-bind="value: name"></p>
+    <p>user age : <input type="text" data-bind="value: age"></p>
+    <p>user Do : <input type="text" data-bind="value: doSomeThing"></p>
+    <p>计算属性 : <input type="text" data-bind="value: userInfo"></p>
+
+</body>
+<script type="text/javascript">
+var vm = { // 把对象写在外面的做法
+    name: ko.observable('Lucy'), // 注意点1：被监控属性一定要用ko.observable()来绑定属性值
+    age: 25,
+    doSomeThing: 'do something'
+}
+var obj = vm;
+// vm.name.subscribe(function (newValue) {
+//     console.log(newValue);
+// });
+vm.name.subscribe(function(newValue) {alert("The person's new name is " + newValue);}, null, 'change'); // 注意点2：第二个参数null是上下文对象，'change是触发事件,默认是change，可省'
+ko.applyBindings(vm);
+
+</script>
+</html>

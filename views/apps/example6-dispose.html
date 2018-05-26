@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../js/knockout-3.1.0.debug.js" charset="UTF-8"></script>
+    <title>ko-simple-bindings</title>
+</head>
+<body>
+    <p>user name : <input type="text" data-bind="value: name"></p>
+    <p>user age : <input type="text" data-bind="value: age"></p>
+    <p><input type="button" data-bind="click: cancelSub" value="注销用户名监控"></p>
+</body>
+<script type="text/javascript">
+var sub = null; // 通常给对象赋值null是为了后面要做的判断
+var vm = { // 把对象写在外面的做法
+    name: ko.observable('Lucy'), // 注意点1：被监控属性一定要用ko.observable()来绑定属性值
+    age: 25,
+    doSomeThing: 'do something',
+    cancelSub: function () {
+        setTimeout(function () { // 注意这个对象是在后面获取的，所以这里要做一个异步获取
+            if (sub) 
+                sub.dispose()
+        }, 0)
+    }
+}
+sub = vm.name.subscribe(function(newValue) {alert("The person's new name is " + newValue);}, null, 'change'); // 注意点2：第二个参数null是上下文对象，'change是触发事件,默认是change，可省'
+
+ko.applyBindings(vm);
+
+
+</script>
+</html>
